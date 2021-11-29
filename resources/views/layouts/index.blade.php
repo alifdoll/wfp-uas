@@ -38,16 +38,16 @@
   
                   <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
                       <div class="site-logo">
-                          <a href="index.html" class="js-logo-clone">Shoppers</a>
+                          <a href="/" class="js-logo-clone">Shoppers</a>
                       </div>
                   </div>
   
                   <div class="col-6 col-md-4 order-3 order-md-3 text-right">
                       <div class="site-top-icons">
                           <ul>
-                            <a href="/login" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Login</a>
+                            <a href="/login" class="btn btn-primary btn-lg text-white" tabindex="-1" role="button" aria-disabled="true">Login</a>
 
-                            <a href="/register" class="btn btn-success btn-lg" tabindex="-1" role="button" aria-disabled="true">Register</a>
+                            <a href="/register" class="btn btn-white btn-lg text-black" tabindex="-1" role="button" aria-disabled="true">Register</a>
                               {{-- <li><a href="#"><span class="icon icon-person"></span></a></li>
                               <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                               <li>
@@ -93,9 +93,8 @@
                           <li><a href="#">Menu Three</a></li>
                       </ul>
                   </li>
-                  <li><a href="shop.html">Shop</a></li>
-                  <li><a href="#">Catalogue</a></li>
-                  <li><a href="#">New Arrivals</a></li>
+                  <li><a href="/products">Shop</a></li>
+                  <li><a href="/history">History</a></li>
                   <li><a href="contact.html">Contact</a></li>
               </ul>
           </div>
