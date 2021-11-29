@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/products', function() {
+ return view('products.products');
+});
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', 'HomeController@index')->name('home');
+    
 });
