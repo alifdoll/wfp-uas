@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        if ($user->roles == 'administrator') {
+           
+            return view('layouts.admin');
+        }
+        else if ($user->roles == 'customer') {
+            $product = Product::All();
+            return view('home', compact('product'));
+        }
     }
 }

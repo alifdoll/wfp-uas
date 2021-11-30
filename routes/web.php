@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('home');
+
 Route::get('/products', function () {
     return view('products.listproduct');
 });
@@ -26,6 +26,10 @@ Route::get('/productsdetail', function () {
 
 Route::get('/result', function () {
     return view('products.result');
+});
+
+Route::get('/conq', function () {
+    return view('layouts.admin');
 });
 
 Route::get('/checkout', function () {
@@ -41,4 +45,5 @@ Route::get('/cart', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/', 'HomeController@index')->name('home');
 });
