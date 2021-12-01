@@ -5,8 +5,8 @@
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong
-                        class="text-black">Tank Top T-Shirt</strong></div>
+                <div class="col-md-12 mb-0"><a href="/">Home</a> <span class="mx-2 mb-0">/</span> <strong
+                        class="text-black">{{ $p->name }}</strong></div>
             </div>
         </div>
     </div>
@@ -15,64 +15,60 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="images/cloth_1.jpg" alt="Image" class="img-fluid">
+                    <img src="{{ $p->image }}" alt="Image" class="img-fluid">
                 </div>
                 <div class="col-md-6">
-                    <h2 class="text-black">Tank Top T-Shirt</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt
-                        facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores
-                        fuga voluptas, distinctio, aperiam, ratione dolore.</p>
-                    <p class="mb-4">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem
-                        perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis
-                        perspiciatis illum hic magni iste, velit aperiam quis.</p>
-                    <p><strong class="text-primary h4">$50.00</strong></p>
+                    <h2 class="text-black">{{ $p->name }}</h2>
+                    <p class="mt-3 mb-4">{{ $p->description }}</p>
+                    
+                    <p><strong class="text-primary h4">{{ $p->price }}</strong></p>
                     <div class="mb-1 d-flex">
                         <table class="table">
                             <thead>
 
                                 <tr>
                                     <th scope="col">CPU</th>
-                                    <th scope="col">aaa</th>
+                                    <th scope="col">{{ $p->cpu }}</th>
                                 </tr>
                                 <tr>
                                     <th scope="col">RAM</th>
-                                    <th scope="col">aaa</th>
+                                    <th scope="col">{{ $p->ram }}</th>
                                 </tr>
                                 <tr>
                                     <th scope="col">Storage</th>
-                                    <th scope="col">aaa</th>
+                                    <th scope="col">{{ $p->storage }}</th>
                                 </tr>
                                 <tr>
                                     <th scope="col">Graphics</th>
-                                    <th scope="col">aaa</th>
+                                    <th scope="col">{{ $p->graphics }}</th>
                                 </tr>
                                 <tr>
                                     <th scope="col">Display</th>
-                                    <th scope="col">aaa</th>
+                                    <th scope="col">{{ $p->display }}</th>
                                 </tr>
                                 <tr>
                                     <th scope="col">Battery</th>
-                                    <th scope="col">aaa</th>
+                                    <th scope="col">{{ $p->battery_capacity }}</th>
                                 </tr>
                                 <tr>
                                     <th scope="col">Color</th>
-                                    <th scope="col">aaa</th>
+                                    <th scope="col">{{ $p->color }}</th>
                                 </tr>
                                 <tr>
                                     <th scope="col">Dimensions</th>
-                                    <th scope="col">aaa</th>
+                                    <th scope="col">{{ $p->dimensions }}</th>
                                 </tr>
                                 <tr>
-                                    <th scope="col">Weights</th>
-                                    <th scope="col">aaa</th>
+                                    <th scope="col">Weight</th>
+                                    <th scope="col">{{ $p->weight }}</th>
                                 </tr>
                                 <tr>
                                     <th scope="col">Ports</th>
-                                    <th scope="col">aaa</th>
+                                    <th scope="col">{{ $p->ports }}</th>
                                 </tr>
                                 <tr>
                                     <th scope="col">Connectivity</th>
-                                    <th scope="col">aaa</th>
+                                    <th scope="col">{{ $p->connectivity }}</th>
                                 </tr>
 
                             </thead>
@@ -92,7 +88,7 @@
                         </div>
 
                     </div>
-                    <p><a href="/cart" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+                    <p><a href="{{ url('add-to-cart/'.$p->id) }}" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
 
                 </div>
             </div>

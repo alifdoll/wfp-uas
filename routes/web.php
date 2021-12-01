@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,16 +21,14 @@ Route::get('/products', function () {
     return view('products.listproduct');
 });
 
-Route::get('/productsdetail', function () {
-    return view('products.detailproduct');
-});
+Route::get('/product/{id}', 'HomeController@detail');
 
 Route::get('/result', function () {
     return view('products.result');
 });
 
 Route::get('/conq', function () {
-    return view('layouts.admin');
+    return view('homeAdmin');
 });
 
 Route::get('/checkout', function () {
@@ -40,10 +39,32 @@ Route::get('/history', function () {
     return view('products.history');
 });
 
-Route::get('/cart', function () {
-    return view('products.cart');
+Route::get('/mgpegawai', function () {
+    return view('admin.pegawai');
 });
 
+Route::get('/mgproduct-detail', function () {
+    return view('admin.productdetail');
+});
+
+Route::get('/mgproduct', function () {
+    return view('admin.product');
+});
+
+
+
+
+
+Route::get('/', 'HomeController@index')->name('home');
+
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/cart', 'ProductController@cart');
+
+    Route::get('/compare', 'ProductController@compareView');
+    
+    Route::get('/add-to-cart/{id}', 'ProductController@addToCart');
+
+    Route::get('/remove-from-cart/{id}', 'ProductController@removeFromCart');
+
+    Route::post('product/compare', 'ProductController@compare')->name('product.compare');
 });

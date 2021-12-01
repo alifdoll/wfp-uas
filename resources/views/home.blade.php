@@ -7,7 +7,7 @@
 <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
     <div class="block-4 text-center border">
       <figure class="block-4-image">
-        <a href="/productsdetail"><img src="{{ $item->image }}" alt="Image placeholder" style="width: 400px; height: 300px;"></a>
+        <a href="/product/{{ $item->id }}"><img src="{{ $item->image }}" alt="Image placeholder" style="width: 400px; height: 300px;"></a>
       </figure>
       <div class="block-4-text p-4">
         <h3><a href="/productsdetail">{{ $item->name }}</a></h3>

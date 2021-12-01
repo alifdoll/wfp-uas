@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
     <link rel="stylesheet" href="{{ asset('shoppers-master/fonts/icomoon/style.css') }}">
 
@@ -19,6 +21,17 @@
     <link rel="stylesheet" href="{{ asset('shoppers-master/css/aos.css') }}">
 
     <link rel="stylesheet" href="{{ asset('shoppers-master/css/style.css') }}">
+    @yield('ajax')
+    <style>
+        .form-select {
+            width: 100%;
+            height: 40px;
+            padding: 0 1rem 0 1rem;
+            background-color: #7971E9;
+            color: white;
+
+        }
+    </style>
 
 </head>
 
@@ -54,20 +67,17 @@
                                         <a href="/register" class="btn btn-white btn-lg text-black" tabindex="-1"
                                             role="button" aria-disabled="true">Register</a>
                                     @else
-                                        <li class="dropdown nav-item"><a href="#"
-                                                ><span
+                                        <li class="dropdown nav-item"><a href="#"><span
                                                     class="icon icon-person"></span></a>
-
-                                    
-
-
-
                                         </li>
                                         <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                                         <li>
-                                            <a href="cart.html" class="site-cart">
+                                            <a href="/cart" class="site-cart">
                                                 <span class="icon icon-shopping_cart"></span>
-                                                <span class="count">2</span>
+                                                @if(session()->has('cart'))
+                                                <span class="count">{{ count(session()->get('cart')) }}</span>
+                                                
+                                                @endif
                                             </a>
                                         </li>
                                         <li>
@@ -82,7 +92,7 @@
                                                     </button>
                                                 </a>
                                             </form>
-                                           
+
                                         </li>
                                         <li class="d-inline-block d-md-none ml-md-0"><a href="#"
                                                 class="site-menu-toggle js-menu-toggle"><span
@@ -106,6 +116,7 @@
 
                         <li><a href="/products">Shop</a></li>
                         <li><a href="/history">History</a></li>
+                        <li><a href="/compare">Compare</a></li>
                     </ul>
                 </div>
             </nav>
@@ -195,6 +206,8 @@
 
     </div>
 
+
+
     <script src="{{ asset('shoppers-master/js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ asset('shoppers-master/js/jquery-ui.js') }}"></script>
     <script src="{{ asset('shoppers-master/js/popper.min.js') }}"></script>
@@ -203,7 +216,9 @@
     <script src="{{ asset('shoppers-master/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('shoppers-master/js/aos.js') }}"></script>
     <script src="{{ asset('shoppers-master/js/main.js') }}"></script>
-
+    
+    @yield('ajax')
+   
 </body>
 
 </html>

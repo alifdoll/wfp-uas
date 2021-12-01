@@ -15,7 +15,9 @@
       <div class="row mb-5">
         <form class="col-md-12" method="post">
           <div class="site-blocks-table">
-            <table class="table table-bordered">
+
+            <h1 class="text-center">No Data</h1>
+            {{-- <table class="table table-bordered">
               <thead>
                 <tr>
                   <th class="product-thumbnail">Image</th>
@@ -58,7 +60,7 @@
                   <td>$49.00</td>
                 </tr>
               </tbody>
-            </table>
+            </table> --}}
           </div>
         </form>
       </div>

@@ -25,14 +25,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        if ($user->roles == 'administrator') {
-           
-            return view('layouts.admin');
-        }
-        else if ($user->roles == 'customer') {
+        if (!Auth::check()) {
             $product = Product::All();
             return view('home', compact('product'));
+        } else {
+            $user = Auth::user();
+            if ($user->roles == 'administrator') {
+                $product = Product::All();
+                return view('homeAdmin', compact('product'));
+            } else if ($user->roles == 'customer') {
+                $product = Product::All();
+                return view('home', compact('product'));
+            }
         }
+    }
+
+    public function detail($id)
+    {
+        $p = Product::find($id);
+       return view('products.detailproduct', compact('p'));
+        
     }
 }
