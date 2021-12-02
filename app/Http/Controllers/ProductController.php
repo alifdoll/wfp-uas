@@ -83,7 +83,7 @@ class ProductController extends Controller
         //
     }
 
-    public function addToCart($id)
+    public function addToCart(Request $request, $id)
     {
         $p = Product::find($id);
         $cart = session()->get('cart');
@@ -92,10 +92,13 @@ class ProductController extends Controller
                 "id" => $p->id,
                 "image" => $p->image,
                 "name" => $p->name,
-                "quantity" => 1,
+                "quantity" => $request->post('quantity'),
                 "price" => $p->price,
 
             ];
+        }
+        else {
+            $cart[$id] ["quantity"] += $request->post('quantity');
         }
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully');
@@ -131,6 +134,6 @@ class ProductController extends Controller
         $product = Product::find($id);
         return response()->json(array(
             "msg" => $product
-        ));
+        ), 200);
     }
 }

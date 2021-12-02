@@ -2,6 +2,15 @@
 
 @section('content')
 
+@php
+$total = 0;
+foreach ($cart as $key => $value) {
+  $price = (int)$value['price'];
+  $quan = (int)$value['quantity'];
+  $total = ($price * $quan) + $total;
+}   
+@endphp
+
 <div class="bg-light py-3">
     <div class="container">
       <div class="row">
@@ -38,13 +47,11 @@
                   <td>Rp. {{ $item['price'] }}</td>
                   <td>
                     <div class="input-group mb-3" style="max-width: 120px;">
-                      <div class="input-group-prepend">
-                        <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                      </div>
-                      <input type="text" class="form-control text-center" value="{{ $item['quantity'] }}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                      </div>
+{{--                       
+                      <input type="text" class="form-control text-center" value="{{ $item['quantity'] }}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"> --}}
+
+                      <h2>{{ $item['quantity'] }}</h2>
+                      
                     </div>
 
                   </td>
@@ -81,20 +88,13 @@
                   <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
                 </div>
               </div>
-              <div class="row mb-3">
-                <div class="col-md-6">
-                  <span class="text-black">Subtotal</span>
-                </div>
-                <div class="col-md-6 text-right">
-                  <strong class="text-black">$230.00</strong>
-                </div>
-              </div>
+              
               <div class="row mb-5">
                 <div class="col-md-6">
                   <span class="text-black">Total</span>
                 </div>
                 <div class="col-md-6 text-right">
-                  <strong class="text-black">$230.00</strong>
+                  <strong class="text-black">{{ $total }}</strong>
                 </div>
               </div>
 

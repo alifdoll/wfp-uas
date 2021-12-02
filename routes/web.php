@@ -39,20 +39,23 @@ Route::get('/history', function () {
     return view('products.history');
 });
 
-Route::get('/mgpegawai', function () {
-    return view('admin.pegawai');
+Route::get('/mgpegawai', 'Homecontroller@user');
+
+Route::get('/mgpegawai-add', function () {
+    return view('admin.pegawai.tambahPegawai');
 });
 
-Route::get('/mgproduct-detail', function () {
-    return view('admin.productdetail');
+Route::get('/mgpegawai-edit/{id}', 'Homecontroller@editUser');
+
+Route::get('/mgproduct-add', function () {
+    return view('admin.product.tambahproduct');
 });
 
-Route::get('/mgproduct', function () {
-    return view('admin.product');
-});
+Route::get('/mgproduct', 'Homecontroller@mgproduct');
 
+Route::get('/mgproduct-detail/{id}', 'Homecontroller@detailAdminProduct');
 
-
+Route::get('/mgproduct-edit/{id}', 'Homecontroller@editProduct');
 
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -62,9 +65,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/compare', 'ProductController@compareView');
     
-    Route::get('/add-to-cart/{id}', 'ProductController@addToCart');
+    Route::post('/add-to-cart/{id}', 'ProductController@addToCart');
 
     Route::get('/remove-from-cart/{id}', 'ProductController@removeFromCart');
 
-    Route::post('product/compare', 'ProductController@compare')->name('product.compare');
+    Route::post('/product/compare', 'ProductController@compare')->name('product.compare');
 });

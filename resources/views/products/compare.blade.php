@@ -1,14 +1,18 @@
 @extends('layouts.index')
 
+{{--  Belum selesai --}}
 @section('ajax')
     <script>
-        function showProduct(productId) {
+        function showProduct(product) {
+            var emt = document.getElementById(product)
+            var id = emt.value
+            
             $.ajax({
                 type: 'POST',
                 url: '{{ route('product.compare') }}',
                 data: {
-                    _token = {{ csrf_token() }},
-                    id = productId,
+                    _token: "<?= csrf_token() ?>",
+                    id: id,
 
 
                 },
@@ -17,11 +21,10 @@
                     console.log(data);
                 },
             });
-            // console.log(productId);
+            // console.log(id);
         }
 
-        function testing()
-        {
+        function testing() {
             console.log('tes');
         }
     </script>
@@ -40,18 +43,19 @@
                 <div class="row text-center justify-content-around">
                     <div class="col-sm-4">
                         <div class="choose-item">
-                            <select class="form-select" aria-label="Default select example">
+                            <select id="1" class="form-select" aria-label="Default select example">
 
-                                <option selected>Open this select menu</option>
+                                <option >Open this select menu</option>
                                 @foreach ($product1 as $p1)
                                     <option value="{{ $p1->id }}">{{ $p1->name }}</option>
                                 @endforeach
 
                             </select>
                             <div class="mt-3 mb-5">
-                                <button type="button" class="btn btn-outline-primary btn-lg" style="width: 100%;" onclick="showProduct(1)">Primary</button>
+                                <button type="button" class="btn btn-outline-primary btn-lg" style="width: 100%;"
+                                    onclick="showProduct('1')">Primary</button>
                             </div>
-                            
+
 
                             <img src="https://i.redd.it/wao27j4k49961.jpg" alt="" class="img-fluid">
                             <div class="choose-caption mt-3 mb-3">
@@ -64,14 +68,15 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="choose-item">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
+                            <select id="2" class="form-select" aria-label="Default select example">
+                                <option>Open this select menu</option>
                                 @foreach ($product2 as $p2)
                                     <option value="{{ $p2->id }}">{{ $p2->name }}</option>
                                 @endforeach
                             </select>
                             <div class="mt-3 mb-5">
-                                <button type="button" class="btn btn-outline-primary btn-lg" style="width: 100%;" onclick="testing()">Primary</button>
+                                <button type="button" class="btn btn-outline-primary btn-lg" style="width: 100%;"
+                                    onclick="showProduct('2')">Primary</button>
                             </div>
                             <img src="https://i.redd.it/wao27j4k49961.jpg" alt="" class="img-fluid">
                             <div class="choose-caption mt-3 mb-3">
