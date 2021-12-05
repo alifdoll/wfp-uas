@@ -17,8 +17,10 @@
 
                 },
                 success: function(data) {
-                    $('#tes').html(data.msg);
-                    console.log(data);
+                    $('#tes').html(data.msg['id']);
+                    $('#cpu1').html(data.msg['cpu']);
+                    $('#ram1').html(data.msg['ram']);
+                    console.log(data.msg);
                 },
             });
             // console.log(id);
@@ -100,48 +102,48 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">CPU</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">RAM</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="ram1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Storage</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="storage1">aaa</th>
                                             </tr>
                                             <tr>
 
                                                 <th scope="col">Graphics</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="graphics1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Display</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Battery</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Color</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Dimensions</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Weights</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Ports</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Connectivity</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
 
                                         </thead>
@@ -155,48 +157,48 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">CPU</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu2">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">RAM</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="ram2">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Storage</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
 
                                                 <th scope="col">Graphics</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Display</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Battery</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Color</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Dimensions</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Weights</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Ports</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
                                             <tr>
                                                 <th scope="col">Connectivity</th>
-                                                <th scope="col">aaa</th>
+                                                <th scope="col" id="cpu1">aaa</th>
                                             </tr>
 
                                         </thead>

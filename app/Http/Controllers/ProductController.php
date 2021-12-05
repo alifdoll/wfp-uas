@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::all();
+        return view('products.listproduct', compact('product'));
     }
 
     /**
@@ -35,7 +36,31 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Product();
+        
+        
+        
+        $data->name = $request->get('name');
+        $data->description = $request->get('description');
+        $data->image = $request->get('image');
+        $data->price = $request->get('price');
+        $data->stock = $request->get('stock');
+        $data->cpu = $request->get('cpu');
+        $data->ram = $request->get('ram');
+        $data->storage = $request->get('storage');
+        $data->graphics = $request->get('graphics');
+        $data->display = $request->get('display');
+        $data->battery_capacity = $request->get('battery_capacity');
+        $data->color = $request->get('color');
+        $data->dimensions = $request->get('dimensions');
+        $data->weight = $request->get('weight');
+        $data->ports = $request->get('ports');
+        $data->connectivity = $request->get('connectivity');
+        $data->category_id = $request->get('category_id');
+        $data->brand_id = $request->get('brand_id');
+
+        $data->save();
+        return redirect()->route('admin.product.homeProduct')->with('status', 'Data Product berhasil ditambahkan');
     }
 
     /**
@@ -67,9 +92,29 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $product->name = $request->get('name');
+        $product->description = $request->get('description');
+        $product->image = $request->get('image');
+        $product->price = $request->get('price');
+        $product->stock = $request->get('stock');
+        $product->cpu = $request->get('cpu');
+        $product->ram = $request->get('ram');
+        $product->storage = $request->get('storage');
+        $product->graphics = $request->get('graphics');
+        $product->display = $request->get('display');
+        $product->battery_capacity = $request->get('battery_capacity');
+        $product->color = $request->get('color');
+        $product->dimensions = $request->get('dimensions');
+        $product->weight = $request->get('weight');
+        $product->ports = $request->get('ports');
+        $product->connectivity = $request->get('connectivity');
+        $product->category_id = $request->get('category_id');
+        $product->brand_id = $request->get('brand_id');
+        
+        $product->save();
+        return redirect()->route('admin.product.homeProduct')->with('status', 'Data Product berhasil diubah');
     }
 
     /**
@@ -78,9 +123,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        try {
+            $product->delete();
+            return redirect()->route('admin.product.homeProduct')->with('delete', 'Data brand Berhasil Dihapus');
+        } catch (\PDOException $e) {
+            
+        }
     }
 
     public function addToCart(Request $request, $id)

@@ -75,6 +75,14 @@ class HomeController extends Controller
             }
     }
 
+    public function mgproductAdd()
+    {
+        $p = Product::all();
+        $b = Brand::all();
+        $c = Category::all();
+        return view('admin.product.tambahProduct', compact('p','b','c'));
+    }
+
     public function detailAdminProduct($id)
     {
         $p = Product::find($id);

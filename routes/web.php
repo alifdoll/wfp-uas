@@ -17,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/products', function () {
-    return view('products.listproduct');
-});
+Route::resource('/products', 'ProductController');
+
 
 Route::get('/product/{id}', 'HomeController@detail');
 
@@ -39,7 +38,9 @@ Route::get('/history', function () {
     return view('products.history');
 });
 
-Route::get('/mgpegawai', 'Homecontroller@user');
+Route::get('/mgpegawai', 'Homecontroller@user')->name('admin.user.homeUser');
+
+Route::resource('/users', 'UserController');
 
 Route::get('/mgpegawai-add', function () {
     return view('admin.pegawai.tambahPegawai');
@@ -47,15 +48,45 @@ Route::get('/mgpegawai-add', function () {
 
 Route::get('/mgpegawai-edit/{id}', 'Homecontroller@editUser');
 
-Route::get('/mgproduct-add', function () {
-    return view('admin.product.tambahproduct');
-});
+Route::get('/mgproduct-add', 'Homecontroller@mgproductAdd');
 
-Route::get('/mgproduct', 'Homecontroller@mgproduct');
+Route::get('/mgproduct', 'Homecontroller@mgproduct')->name('admin.product.homeProduct');
 
 Route::get('/mgproduct-detail/{id}', 'Homecontroller@detailAdminProduct');
 
 Route::get('/mgproduct-edit/{id}', 'Homecontroller@editProduct');
+
+// Category
+Route::get('/mgcate', 'CategoryController@index')->name('admin.cate.homeCate');
+
+Route::get('/mgcate-add', function () {
+    return view('admin.category.tambahcategory');
+});
+
+Route::get('/mgcate-edit/{id}', 'CategoryController@edit');
+
+Route::resource('/cates', 'CategoryController');
+
+// End Category
+
+// Brand
+
+Route::get('/mgbrand', 'BrandController@index')->name('admin.brand.homeBrand');
+
+
+Route::get('/mgbrand-add', function () {
+    return view('admin.brand.tambahbrand');
+});
+
+Route::resource('/brands', 'BrandController')->middleware('auth');
+
+Route::get('/mgbrand-edit/{id}', 'BrandController@edit');
+
+
+// End Brand
+Route::get('/mgtransaction', function () {
+    return view('admin.transaction.hometransaction');
+});
 
 
 Route::get('/', 'HomeController@index')->name('home');

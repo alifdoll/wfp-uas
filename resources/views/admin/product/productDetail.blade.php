@@ -1,4 +1,29 @@
 @extends('layouts.admin')
+@section('header')
+<h3 class="page-title">
+    Products <small>List Products</small>
+</h3>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="/">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="/mgproduct">List Products</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Detail Products</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        
+        
+    </ul>
+    
+</div>    
+@endsection
 
 @section('content')
 
@@ -87,7 +112,14 @@
                                 
                             </div>
                             <div class="col-sm-6">
-                                <button class="btn btn-danger" style="width: 100%;"><i class="bi bi-trash"></i> Delete</button>
+                                <form action="{{ route('products.update', $p->id) }}" method="POST">
+                                    @method('delete')
+                                    @csrf
+
+
+                                    <button type="submit" href="#" style="width: 100%;" class="btn btn-danger"><i
+                                            class="bi bi-trash"></i>Delete</button>
+                                </form>
                             </div>
                         </div>
                     </div>

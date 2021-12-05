@@ -68,8 +68,7 @@
                                         <a href="/register" class="btn btn-white btn-lg text-black" tabindex="-1"
                                             role="button" aria-disabled="true">Register</a>
                                     @else
-                                        <li class="dropdown nav-item"><a href="#"><span
-                                                    class="icon icon-person"></span></a>
+                                        <li class="dropdown nav-item"><a href="#"><span>{{ Auth::user()->name }} </span></a>
                                         </li>
                                         <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                                         <li>
