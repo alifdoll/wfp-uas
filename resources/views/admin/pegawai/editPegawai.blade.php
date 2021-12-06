@@ -63,19 +63,19 @@
                                 <div class="mb-4">
                                     <label for="exampleInputPassword1" class="form-label">Password</label>
                                     <input type="password" class="form-control" name="password"
-                                        value="{{ $p->password }}" id="exampleInputPassword1">
+                                        value="" id="exampleInputPassword1">
 
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="exampleInputEmail1" class="form-label">Roles</label>
+                                    <label for="exampleInputEmail1" class="form-label">Suspend</label>
 
-                                    <select class="form-select" aria-label="Default select example" name="roles">
+                                    <select class="form-select" aria-label="Default select example" name="suspend">
 
                                         <option selected>Open this select menu</option>
-                                        <option value="administrator" selected>Administrator</option>
-                                        <option value="customer">Customer</option>
-                                        <option value="seller">Seller</option>
+                                        <option value="suspend" selected>Suspend</option>
+                                        <option value="unsuspend">Unsuspend</option>
+                                        
 
                                     </select>
 

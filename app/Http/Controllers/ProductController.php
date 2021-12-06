@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\CartItem;
+use App\CartSession;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -135,6 +138,13 @@ class ProductController extends Controller
 
     public function addToCart(Request $request, $id)
     {
+        // $cart = CartSession::where("id", "")
+        // $cartSession = CartSession::create(Auth::user()->id);
+        // CartItem::create([
+        //     "session_id"=>$cartSession->id,
+        //     "product_id"=>$id,
+        //     "quantity"=>$request->post('quantity')
+        // ]);
         $p = Product::find($id);
         $cart = session()->get('cart');
         if (!isset($cart[$id])) {
@@ -151,6 +161,7 @@ class ProductController extends Controller
             $cart[$id] ["quantity"] += $request->post('quantity');
         }
         session()->put('cart', $cart);
+        
         return redirect()->back()->with('success', 'Product added to cart successfully');
     }
 
@@ -169,6 +180,7 @@ class ProductController extends Controller
     {
         $cart = session()->get('cart');
         return view('products.cart', compact('cart'));
+        // return dd(Auth::user()->id);
     }
 
     public function compareView()
@@ -185,5 +197,18 @@ class ProductController extends Controller
         return response()->json(array(
             "msg" => $product
         ), 200);
+    }
+
+    public function checkout()
+    {
+        $cart = session()->get('cart');
+        if($cart == null)
+        {
+            abort(404);
+        }
+        else 
+        {
+            return view('products.checkout', compact('cart'));
+        }
     }
 }

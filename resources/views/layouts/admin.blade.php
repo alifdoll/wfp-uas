@@ -207,6 +207,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </a>
                         </li>
                     @endif
+                    @if (!Auth::user()->roles == 'administrator')
                     <li>
                         <a href="/mgproduct">
                             <i class="icon-present"></i>
@@ -231,8 +232,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
 
                     </li>
+                    @endif
                     <li>
-                        <a href="javascript:;">
+                        <a href="/mgorder">
                             <i class="icon-calendar"></i>
                             <span class="title">Transactions</span>
                             <span class="arrow "></span>

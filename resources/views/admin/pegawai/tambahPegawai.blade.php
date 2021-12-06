@@ -62,19 +62,7 @@
                                    
                                 </div>
 
-                                <div class="mb-4">
-                                    <label for="exampleInputEmail1" class="form-label">Roles</label>
-                                   
-                                    <select class="form-select" name="roles" aria-label="Default select example">
-
-                                        <option>Open this select menu</option>
-                                        <option value="administrator">Administrator</option>
-                                        <option value="customer">Customer</option>
-                                        <option value="seller">Seller</option>
-
-                                    </select>
-                                   
-                                </div>
+                                
                                
                                 <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Submit</button>
                             </form>

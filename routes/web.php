@@ -30,9 +30,7 @@ Route::get('/conq', function () {
     return view('homeAdmin');
 });
 
-Route::get('/checkout', function () {
-    return view('products.checkout');
-});
+Route::get('/checkout', 'ProductController@checkout');
 
 Route::get('/history', function () {
     return view('products.history');
@@ -84,10 +82,15 @@ Route::get('/mgbrand-edit/{id}', 'BrandController@edit');
 
 
 // End Brand
-Route::get('/mgtransaction', function () {
-    return view('admin.transaction.hometransaction');
-});
 
+// Order
+// Route::get('/mgtransaction', function () {
+//     return view('admin.transaction.hometransaction');
+// });
+
+Route::get('/mgorder', 'OrderController@index')->name('admin.transaction.homeTransaction');
+
+// End Order
 
 Route::get('/', 'HomeController@index')->name('home');
 

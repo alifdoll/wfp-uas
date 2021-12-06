@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -40,8 +41,8 @@ class UserController extends Controller
         $data->username = $request->get('username');
         $data->name = $request->get('name');
         $data->email = $request->get('email');
-        $data->password = $request->get('password');
-        $data->roles = $request->get('roles');
+        $data->password = Hash::make($request->get('password'));
+        $data->roles = 'seller';
 
         $data->save();
         return redirect()->route('admin.user.homeUser')->with('status', 'Data User berhasil ditambahkan');
@@ -78,11 +79,12 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $pass = $request->get('password')==''?'password':$request->get('password');
         $user->username = $request->get('username');
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->password = $request->get('password');
-        $user->roles = $request->get('roles');
+        $user->password = Hash::make($pass);
+        
 
         $user->save();
         return redirect()->route('admin.user.homeUser')->with('status', 'Data user berhasil diubah');

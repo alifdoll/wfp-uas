@@ -32,6 +32,7 @@
                     </div>
 
                 </div>
+                @if (!Auth::user()->roles == 'administrator')
                 <div class="col-sm-4">
                     <h2 class="pb-5">Management Product</h2>
                     <div class="caption-dashboard mt-5">
@@ -42,6 +43,7 @@
                     </div>
 
                 </div>
+                @endif
 
                 <div class="col-sm-4">
                     <h2 class="pb-5">Management Transaction</h2>
@@ -49,10 +51,11 @@
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolores voluptatum distinctio at
                             inventore, blanditiis saepe quod quo, magni, aspernatur doloribus eum. Veniam numquam
                             perferendis assumenda distinctio. Perspiciatis, quibusdam dolorem!</p>
-                        <a href="/mgtransaction" role="button" class="btn btn-lg btn-primary">View</a>
+                        <a href="/mgorder" role="button" class="btn btn-lg btn-primary">View</a>
                     </div>
 
                 </div>
+                @if (!Auth::user()->roles == 'administrator')
                 <div class="row mb-5 mt-5 justify-content-around text-center">
                     <div class="col-sm-4">
                         <h2 class="pb-5">Management Category</h2>
@@ -77,6 +80,7 @@
                         </div>
 
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

@@ -2,6 +2,18 @@
 
 @section('content')
 
+@php
+    $total = 0;
+    if ($cart != null) {
+        foreach ($cart as $key => $value) {
+            $price = (int) $value['price'];
+            $quan = (int) $value['quantity'];
+            $total = $price * $quan + $total;
+        }
+    }
+
+    @endphp
+
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
@@ -28,22 +40,17 @@
                                 <th>Total</th>
                             </thead>
                             <tbody>
+                                @foreach ($cart as $item)
                                 <tr>
-                                    <td>Top Up T-Shirt <strong class="mx-2">x</strong> 1</td>
-                                    <td>$250.00</td>
+                                    <td>{{ $item['name'] }}<strong class="mx-2">x</strong>{{ $item['quantity'] }}</td>
+                                    <td>Rp. {{ $item['price'] }}</td>
                                 </tr>
-                                <tr>
-                                    <td>Polo Shirt <strong class="mx-2">x</strong> 1</td>
-                                    <td>$100.00</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
-                                    <td class="text-black">$350.00</td>
-                                </tr>
+                                @endforeach
                                 <tr>
                                     <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
-                                    <td class="text-black font-weight-bold"><strong>$350.00</strong></td>
+                                    <td class="text-black font-weight-bold"><strong>{{ $total }}</strong></td>
                                 </tr>
+                             
                             </tbody>
                         </table>
 
@@ -56,7 +63,6 @@
 
                     </div>
                 </div>
-
 
 
             </div>

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class TransactionController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,17 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        
+        $order = Order::select(
+            "orders.id",
+            "orders.user_id",
+            "orders.created_at",
+            "users.id as users_id_name",
+            "users.name"
+        )
+        ->join("users", "users.id", "=", "orders.user_id")
+        ->get();
+        return view('admin.transaction.homeTransaction', compact('order'));
+        // return dd($order);
     }
 
     /**
@@ -77,8 +90,28 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        //
+        $this->authorize('delete-permission', $order);
+    }
+
+    public function submit_front()
+    {
+        $this->authorize('checkmember');
+
+        $cart = session()->get('cart');
+        $user = Auth::user();
+        $t = new Order;
+        $t->customer_id = $user->id;
+        $t->transaction_date = Carbon::now()->toDateTimeString();
+        $t->save();
+
+        $totalharga = $t->insertProduct($cart, $user);
+        $t->total = $totalharga;
+        $t->save();
+
+        session()->forget('cart');
+        return redirect('home');
+        
     }
 }

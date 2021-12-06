@@ -2,29 +2,36 @@
 
 @section('content')
 
-@php
-$total = 0;
-foreach ($cart as $key => $value) {
-  $price = (int)$value['price'];
-  $quan = (int)$value['quantity'];
-  $total = ($price * $quan) + $total;
-}   
-@endphp
+    @php
+    $total = 0;
+    if ($cart != null) {
+        foreach ($cart as $key => $value) {
+            $price = (int) $value['price'];
+            $quan = (int) $value['quantity'];
+            $total = $price * $quan + $total;
+        }
+    }
 
-<div class="bg-light py-3">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Cart</strong></div>
-      </div>
+    @endphp
+
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong
+                        class="text-black">Cart</strong></div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="site-section">
-    <div class="container">
-      <div class="row mb-5">
-        <form class="col-md-12" method="post">
-          <div class="site-blocks-table">
-            <table class="table table-bordered">
+    <div class="site-section">
+        <div class="container">
+            <div class="row mb-5">
+                <form class="col-md-12" method="post">
+                    <div class="site-blocks-table">
+                        @if ($cart == null)
+                            <p>No Data</p>
+                        @else
+                            <table class="table table-bordered">
               <thead>
                 <tr>
                   <th class="product-thumbnail">Image</th>
@@ -36,6 +43,7 @@ foreach ($cart as $key => $value) {
                 </tr>
               </thead>
               <tbody>
+
                 @foreach ($cart as $item)
                 <tr>
                   <td class="product-thumbnail">
@@ -47,8 +55,6 @@ foreach ($cart as $key => $value) {
                   <td>Rp. {{ $item['price'] }}</td>
                   <td>
                     <div class="input-group mb-3" style="max-width: 120px;">
-{{--                       
-                      <input type="text" class="form-control text-center" value="{{ $item['quantity'] }}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"> --}}
 
                       <h2>{{ $item['quantity'] }}</h2>
                       
@@ -64,53 +70,57 @@ foreach ($cart as $key => $value) {
 
               </tbody>
             </table>
-          </div>
-        </form>
-      </div>
+                        @endif
+                    </div>
+                </form>
+            </div>
 
-      <div class="row">
-        <div class="col-md-6">
-          <div class="row mb-5">
-            <div class="col-md-6 mb-3 mb-md-0">
-              <button class="btn btn-primary btn-sm btn-block">Update Cart</button>
-            </div>
-            <div class="col-md-6">
-              <a href="/products"><button class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button></a>
-            </div>
-          </div>
-          
-        </div>
-        <div class="col-md-6 pl-5">
-          <div class="row justify-content-end">
-            <div class="col-md-7">
-              <div class="row">
-                <div class="col-md-12 text-right border-bottom mb-5">
-                  <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
-                </div>
-              </div>
-              
-              <div class="row mb-5">
+            <div class="row">
                 <div class="col-md-6">
-                  <span class="text-black">Total</span>
-                </div>
-                <div class="col-md-6 text-right">
-                  <strong class="text-black">{{ $total }}</strong>
-                </div>
-              </div>
+                    <div class="row mb-5">
+                        
+                        <div class="col-md-6">
+                            <a href="/products"><button class="btn btn-outline-primary btn-sm btn-block">Continue
+                                    Shopping</button></a>
+                        </div>
+                    </div>
 
-              <div class="row">
-                <div class="col-md-12">
-                    <a href="/checkout">
-                        <button class="btn btn-primary btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proceed To Checkout</button>
-                    </a>
-                  
                 </div>
-              </div>
+                @if($cart!=null)
+                <div class="col-md-6 pl-5">
+                    <div class="row justify-content-end">
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-12 text-right border-bottom mb-5">
+                                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                                </div>
+                            </div>
+
+                            <div class="row mb-5">
+                                <div class="col-md-6">
+                                    <span class="text-black">Total</span>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <strong class="text-black">{{ $total }}</strong>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                  
+                                    <a href="/checkout">
+                                        <button class="btn btn-primary btn-lg py-3 btn-block"
+                                            onclick="window.location='checkout.html'">Proceed To Checkout</button>
+                                    </a>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 
 @endsection

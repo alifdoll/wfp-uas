@@ -28,6 +28,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('delete-permission', function($user) {
+            return ($user->roles == 'administrator');
+        });
+
+        Gate::define('delete-permission', 'App\Policies\UserPolicy@delete');
     }
 }

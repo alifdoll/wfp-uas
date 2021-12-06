@@ -20,5 +20,38 @@
         "remember_token": null,
         "created_at": "2021-11-28 16:15:48",
         "updated_at": "2021-11-28 16:15:48"
+    },
+    {
+        "id": 3,
+        "username": "admin",
+        "name": "admin",
+        "email": "admin@gmail.com",
+        "password": "$2y$10$d7\/zc0EB9he1.ked1zsrfuvZaKryp2SlZ.lG4i9C56enTaITuRUCS",
+        "roles": "administrator",
+        "remember_token": null,
+        "created_at": "2021-11-30 06:43:32",
+        "updated_at": "2021-11-30 06:43:32"
+    },
+    {
+        "id": 4,
+        "username": "azriel",
+        "name": "Azriel Rizki",
+        "email": "azriel@gmail.com",
+        "password": "$2y$10$VY4s197VvTIN038ioZwrcuHbYhFrHuoVCINdQLFQYquDoW9jAmsFO",
+        "roles": "seller",
+        "remember_token": null,
+        "created_at": "2021-12-02 08:17:12",
+        "updated_at": "2021-12-02 08:17:12"
+    },
+    {
+        "id": 7,
+        "username": "testes",
+        "name": "tes123",
+        "email": "tes@gmail.com",
+        "password": "$2y$10$LadO\/6XeZiBTCZfkjLHy7e2tWa8CASjzPCs.5cTQgSqZwPG\/VNR\/W",
+        "roles": "seller",
+        "remember_token": null,
+        "created_at": "2021-12-06 16:04:02",
+        "updated_at": "2021-12-06 16:04:02"
     }
 ]

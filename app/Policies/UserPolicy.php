@@ -29,4 +29,10 @@ class UserPolicy
             ? Response::allow()
             : Response::deny('Anda haruslah terdaftar sebagai member'));
     }
+
+    public function delete(User $user) {
+        return ($user->roles == 'administrator'
+        ? Response::allow()
+        : Response::deny('You must be a super administrator.'));
+    }
 }
