@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->enum('roles', ['customer', 'seller', 'administrator'])->default('customer');
             $table->enum('suspend', ['suspend', 'unsusped'])->default('unsuspend');
-            $table->rememberToken();
+           
             $table->timestamps();
         });
     }
