@@ -7,7 +7,6 @@
         "password": "$2y$10$yrzmk92mvNCFimmU1cpLZ.NimzGEhZG6kGJW\/DsIKt5B9M4TlIBJi",
         "roles": "customer",
         "suspend": "unsuspend",
-        "remember_token": null,
         "created_at": "2021-11-28 16:11:25",
         "updated_at": "2021-12-06 16:17:34"
     },
@@ -19,7 +18,6 @@
         "password": "$2y$10$zdm5KQ8MplOPqzLXRod3Bu1afyKDRuW3X14ctFspxaHtt5vPbFOw6",
         "roles": "customer",
         "suspend": "unsuspend",
-        "remember_token": null,
         "created_at": "2021-11-28 16:15:48",
         "updated_at": "2021-11-28 16:15:48"
     },
@@ -31,7 +29,6 @@
         "password": "$2y$10$d7\/zc0EB9he1.ked1zsrfuvZaKryp2SlZ.lG4i9C56enTaITuRUCS",
         "roles": "administrator",
         "suspend": "unsuspend",
-        "remember_token": null,
         "created_at": "2021-11-30 06:43:32",
         "updated_at": "2021-11-30 06:43:32"
     },
@@ -43,7 +40,6 @@
         "password": "$2y$10$81Pb9rJX.Jub7ffuU2VBUeDk2zS5.h3KIY7v.1N8cOkZfZ5z3nrXu",
         "roles": "seller",
         "suspend": "unsuspend",
-        "remember_token": null,
         "created_at": "2021-12-02 08:17:12",
         "updated_at": "2021-12-07 04:07:27"
     },
@@ -55,7 +51,6 @@
         "password": "$2y$10$YeDCUe3EMn30whtP5ec9IuxL1Zix.TaqO\/qmo68.5O42\/b\/iB7zl6",
         "roles": "seller",
         "suspend": "suspend",
-        "remember_token": null,
         "created_at": "2021-12-06 16:04:02",
         "updated_at": "2021-12-07 00:24:42"
     }

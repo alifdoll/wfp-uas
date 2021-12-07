@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\CartItem;
 use App\CartSession;
+use App\Order;
+use App\OrderDetail;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,9 +42,9 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = new Product();
-        
-        
-        
+
+
+
         $data->name = $request->get('name');
         $data->description = $request->get('description');
         $data->image = $request->get('image');
@@ -97,25 +99,25 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->name = $request->get('name');
-        $product->description = $request->get('description');
-        $product->image = $request->get('image');
-        $product->price = $request->get('price');
-        $product->stock = $request->get('stock');
-        $product->cpu = $request->get('cpu');
-        $product->ram = $request->get('ram');
-        $product->storage = $request->get('storage');
-        $product->graphics = $request->get('graphics');
-        $product->display = $request->get('display');
-        $product->battery_capacity = $request->get('battery_capacity');
-        $product->color = $request->get('color');
-        $product->dimensions = $request->get('dimensions');
-        $product->weight = $request->get('weight');
-        $product->ports = $request->get('ports');
-        $product->connectivity = $request->get('connectivity');
-        $product->category_id = $request->get('category_id');
-        $product->brand_id = $request->get('brand_id');
-        
+        $product->name = $request->post('name');
+        $product->description = $request->post('description');
+        $product->image = $request->post('image');
+        $product->price = $request->post('price');
+        $product->stock = $request->post('stock');
+        $product->cpu = $request->post('cpu');
+        $product->ram = $request->post('ram');
+        $product->storage = $request->post('storage');
+        $product->graphics = $request->post('graphics');
+        $product->display = $request->post('display');
+        $product->battery_capacity = $request->post('battery_capacity');
+        $product->color = $request->post('color');
+        $product->dimensions = $request->post('dimensions');
+        $product->weight = $request->post('weight');
+        $product->ports = $request->post('ports');
+        $product->connectivity = $request->post('connectivity');
+        $product->category_id = $request->post('category_id');
+        $product->brand_id = $request->post('brand_id');
+
         $product->save();
         return redirect()->route('admin.product.homeProduct')->with('status', 'Data Product berhasil diubah');
     }
@@ -132,7 +134,6 @@ class ProductController extends Controller
             $product->delete();
             return redirect()->route('admin.product.homeProduct')->with('delete', 'Data brand Berhasil Dihapus');
         } catch (\PDOException $e) {
-            
         }
     }
 
@@ -156,12 +157,11 @@ class ProductController extends Controller
                 "price" => $p->price,
 
             ];
-        }
-        else {
-            $cart[$id] ["quantity"] += $request->post('quantity');
+        } else {
+            $cart[$id]["quantity"] += $request->post('quantity');
         }
         session()->put('cart', $cart);
-        
+
         return redirect()->back()->with('success', 'Product added to cart successfully');
     }
 
@@ -202,13 +202,34 @@ class ProductController extends Controller
     public function checkout()
     {
         $cart = session()->get('cart');
-        if($cart == null)
-        {
+        if ($cart == null) {
             abort(404);
-        }
-        else 
-        {
+        } else {
+            // return dd($cart);
             return view('products.checkout', compact('cart'));
+        }
+    }
+
+    public function order(Request $request)
+    {
+        $cart = session()->get('cart');
+        $order = new Order;
+        $order->user_id = Auth::user()->id;
+        $saved = $order->save();
+        foreach ($cart as $item) {
+            $detail = new OrderDetail;
+            $detail->order_id = $order->id;
+            $detail->product_id = $item['id'];
+            $detail->quantity = $item['quantity'];
+            $detail->total_price = $item['quantity'] * $item['price'];
+            $detail->save();
+        }
+
+        if (!$saved) {
+            abort(500, 'error');
+        } else {
+            session()->forget('cart');
+            return redirect()->route('result');
         }
     }
 

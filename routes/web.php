@@ -23,17 +23,6 @@ Route::resource('/products', 'ProductController');
 
 Route::get('/product/{id}', 'HomeController@detail');
 
-Route::get('/result', 'ProductController@result');
-
-
-
-
-
-
-
-
-
-
 
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -76,6 +65,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/mgproduct-edit/{id}', 'Homecontroller@editProduct');
 
+    Route::post('/order', 'ProductController@Order')->name('product.order');
+
     // End Product
 
     // Category
@@ -105,6 +96,7 @@ Route::middleware(['auth'])->group(function () {
     // Order
 
     Route::get('/mgorder', 'OrderController@index')->name('admin.transaction.homeTransaction');
+    Route::get('/result', 'ProductController@result')->name("result");
 
     // End Order
 });

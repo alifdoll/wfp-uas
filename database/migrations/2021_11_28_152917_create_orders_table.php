@@ -18,7 +18,8 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->dateTime('created_at', 0);
+            $table->dateTime('paid_at')->nullable();
+            $table->timestamps();
         });
     }
 
