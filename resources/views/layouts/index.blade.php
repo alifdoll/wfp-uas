@@ -115,8 +115,11 @@
                         </li>
 
                         <li><a href="/products">Shop</a></li>
+                        @if(Auth::check())
                         <li><a href="/history">History</a></li>
+                        
                         <li><a href="/compare">Compare</a></li>
+                        @endif
                     </ul>
                 </div>
             </nav>

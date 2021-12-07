@@ -1,24 +1,24 @@
 @extends('layouts.admin')
 @section('header')
-<h3 class="page-title">
-    Users <small>List Users</small>
-</h3>
-<div class="page-bar">
-    <ul class="page-breadcrumb">
-        <li>
-            <i class="fa fa-home"></i>
-            <a href="/">Home</a>
-            <i class="fa fa-angle-right"></i>
-        </li>
-        <li>
-            <a href="#">List Users</a>
-            <i class="fa fa-angle-right"></i>
-        </li>
-        
-        
-    </ul>
-    
-</div>    
+    <h3 class="page-title">
+        Users <small>List Users</small>
+    </h3>
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="/">Home</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="#">List Users</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+
+
+        </ul>
+
+    </div>
 @endsection
 @section('content')
 
@@ -36,47 +36,70 @@
                                 <td scope="col">Username</td>
                                 <td scope="col">Email</td>
                                 <td scope="col">Roles</td>
+                                <td scope="col">Status</td>
                                 <td scope="col">Manage</td>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($p as $users)
 
-                            <tr class="table-td-content">
-                                <td scope="row">{{ $users->id }}</td>
-                                <td>{{ $users->name }}</td>
-                                <td>{{ $users->username }}</td>
-                                <td>{{ $users->email }}</td>
-                                <td>{{ $users->roles }}</td>
-                                
-                                <td>
-                                    
+                                <tr class="table-td-content">
+                                    <td scope="row">{{ $users->id }}</td>
+                                    <td>{{ $users->name }}</td>
+                                    <td>{{ $users->username }}</td>
+                                    <td>{{ $users->email }}</td>
+                                    <td>{{ $users->roles }}</td>
+                                    <td>{{ $users->suspend }}</td>
+
+                                    <td>
 
 
-                                    {{-- //asdsadsad --}}
-                                    <div class="row justify-content-center">
-                                        <div class="col-sm-6">
-                                            <a href="/mgpegawai-edit/{{ $users->id }}" role="button"
-                                                class="btn btn-primary" style="width: 100%;"><i class="bi bi-pencil"></i>Edit</a>
+
+                                        {{-- //asdsadsad --}}
+                                        <div class="row justify-content-center">
+                                            <div class="col-sm-6">
+                                                <a href="/mgpegawai-edit/{{ $users->id }}" role="button"
+                                                    class="btn btn-primary" style="width: 100%;"><i
+                                                        class="bi bi-pencil"></i>Edit</a>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <form action="{{ route('users.update', $users->id) }}" method="POST">
+                                                    @method('delete')
+                                                    @csrf
+
+
+                                                    <button type="submit" href="#" style="width: 100%;"
+                                                        class="btn btn-danger"><i
+                                                            class="bi bi-trash"></i>Delete</button>
+                                                </form>
+                                            </div>
+                                            {{-- @if ($users->suspend == 'unsuspend')
+                                                
+                                            @else
+                                                <div class="col-sm-5">
+                                                    <form action="{{ route('users.update', $users->id) }}" method="POST">
+                                                        @method('delete')
+                                                        @csrf
+
+
+                                                        <button type="submit" href="#" style="width: 100%;"
+                                                            class="btn btn-danger"><i
+                                                                class="bi bi-trash"></i>Suspend</button>
+                                                    </form>
+                                                </div>
+
+
+                                            @endif --}}
+
+
                                         </div>
-                                        <div class="col-sm-6">
-                                            <form action="{{ route('users.update', $users->id) }}" method="POST">
-                                                @method('delete')
-                                                @csrf
 
+                                    </td>
+                                </tr>
 
-                                                <button type="submit" href="#" style="width: 100%;" class="btn btn-danger"><i
-                                                        class="bi bi-trash"></i>Delete</button>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                </td>
-                            </tr>
-                                
                             @endforeach
-                            
-                            
+
+
                         </tbody>
                         @if (session('status'))
                             <div class="alert alert-success">
@@ -91,7 +114,8 @@
                     </table>
                     <div class="add-pegawai">
                         {{-- <button class="btn btn-primary btn-lg"><i class="bi bi-plus"></i> Tambah Pegawai</button> --}}
-                        <a href="/mgpegawai-add" role="button" class="btn btn-lg btn-primary"><i class="bi bi-plus"></i> Tambah Users</a>
+                        <a href="/mgpegawai-add" role="button" class="btn btn-lg btn-primary"><i class="bi bi-plus"></i>
+                            Tambah Users</a>
                     </div>
 
                 </div>

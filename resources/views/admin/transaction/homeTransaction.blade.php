@@ -34,7 +34,7 @@
                         <thead>
                             <tr class="table-td-head">
                                 <td scope="col">ID</td>
-                                <td scope="col">User_ID</td>
+                               
                                 <td scope="col">Name</td>
                                 <td scope="col">Date</td>
                                 <td scope="col">Manage</td>
@@ -45,7 +45,7 @@
 
                             <tr class="table-td-content">
                                 <td scope="row">{{ $o->id }}</td>
-                                <td>{{ $o->user_id }}</td>
+                                
                                 <td>{{ $o->name }}</td>
                                 <td>{{ $o->created_at }}</td>
                                 
