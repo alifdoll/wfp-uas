@@ -15,7 +15,47 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         ">{{ $item->description }}</p>
-        <p class="text-primary font-weight-bold">{{ $item->price }}</p>
+        @php
+            $priceX = number_format($item->price);
+            $split = str_split($priceX);
+            // echo $split[0];
+            // echo $split[1];
+            $length = Str::length($priceX);
+            for ($i=0; $i < $length; $i++) { 
+              // echo $split[3];
+              if($length == 10)
+              {
+                if($i>0)
+                // echo "Tes";   
+                $replaced = str_replace($split[1], "X", $priceX);
+              }
+              else 
+              {
+                if($split[2]=="1" || $split[2]=="2" ||$split[2]=="2"||$split[2]=="4"||$split[2]=="5"||$split[2]=="6"||$split[2]=="7"||$split[2]=="8"||$split[2]=="9")
+                {
+
+                  $replaced = str_replace($split[$i], "Z", $priceX);
+                  // if($split[0] == $split[3])
+                  // {
+                  //   //  $split[2]=="Z";
+                  //   $replaced = str_replace($split[$i], "Z", $priceX);
+                  // }
+                  
+                // echo "Tes";   
+                
+                }
+                else 
+                {
+                  if($i>0)
+                // echo "Tes";   
+                $replaced = str_replace($split[2], "X", $priceX);
+                }
+                
+              }
+            }
+            // echo $replaced;
+        @endphp
+        <p class="text-primary font-weight-bold">{{ $replaced }}</p>
       </div>
     </div>
   </div>

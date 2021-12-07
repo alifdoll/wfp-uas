@@ -21,7 +21,7 @@
                     <h2 class="text-black">{{ $p->name }}</h2>
                     <p class="mt-3 mb-4">{{ $p->description }}</p>
 
-                    <p><strong class="text-primary h4">{{ $p->price }}</strong></p>
+                    <p><strong class="text-primary h4">{{ number_format($p->price) }}</strong></p>
                     <div class="mb-1 d-flex">
                         <table class="table">
                             <thead>
