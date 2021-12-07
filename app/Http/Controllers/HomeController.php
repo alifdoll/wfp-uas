@@ -98,4 +98,9 @@ class HomeController extends Controller
         return view('admin.product.editProduct', compact('p','c','b'));
         // return dd($p);
     }
+
+    public function homeAdmin()
+    {
+        return view('homeAdmin');
+    }
 }

@@ -211,4 +211,14 @@ class ProductController extends Controller
             return view('products.checkout', compact('cart'));
         }
     }
+
+    public function history()
+    {
+        return view('products.history');
+    }
+
+    public function result()
+    {
+        return view('products.result');
+    }
 }

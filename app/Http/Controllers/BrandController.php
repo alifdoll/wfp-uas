@@ -25,7 +25,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        
+        return view('admin.brand.tambahbrand');
     }
 
     /**
