@@ -83,6 +83,7 @@ class UserController extends Controller
         $user->username = $request->get('username');
         $user->name = $request->get('name');
         $user->email = $request->get('email');
+        $user->suspend = $request->get('suspend');
         $user->password = Hash::make($pass);
         
 

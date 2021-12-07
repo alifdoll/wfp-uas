@@ -80,19 +80,25 @@ License: You must have a valid license purchased only from themeforest(the above
 
         }
 
-		.button-logout-dashboard-pegawai {
-			margin-top: 45rem;
-			position: fixed;
-			margin-left: 5rem;
+        .button-logout-dashboard-pegawai {
+            margin-top: 45rem;
+            position: fixed;
+            margin-left: 5rem;
 
-		}
+        }
 
         .button-logout-dashboard-admin {
-			margin-top: 40rem;
-			position: fixed;
-			margin-left: 5rem;
+            margin-top: 40rem;
+            position: fixed;
+            margin-left: 5rem;
 
-		}
+        }
+
+        .button-logout-dashboard-suspend {
+            margin-top: 64rem;
+            position: fixed;
+            margin-left: 5rem;
+        }
 
     </style>
 </head>
@@ -124,7 +130,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- END RESPONSIVE MENU TOGGLER -->
             <!-- BEGIN TOP NAVIGATION MENU -->
             <ul class="nav navbar-nav pull-right">
-                
+
                 <li class="devider">
                     &nbsp;
                 </li>
@@ -141,8 +147,8 @@ License: You must have a valid license purchased only from themeforest(the above
                         <li>
                             <a href="extra_profile.html"><i class="fa fa-user"></i> My Profile</a>
                         </li>
-                        
-                        
+
+
                         <li>
                             <a href="/login"><i class="fa fa-key"></i>
 
@@ -183,64 +189,67 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                         <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
                     </li>
-                    <li class="sidebar-search-wrapper">
-                        <form class="search-form" role="form" action="index.html" method="get">
-                            <div class="input-icon right">
-                                <i class="icon-magnifier"></i>
-                                <input type="text" class="form-control" name="query" placeholder="Search...">
-                            </div>
-                        </form>
-                    </li>
-                    <li class="start">
-                        <a href="/">
-                            <i class="icon-home"></i>
-                            <span class="title">Home</span>
-                            <span class="selected"></span>
-                        </a>
-                    </li>
-                    @if (Auth::user()->roles == 'administrator')
+                    
+                    @if (Auth::user()->suspend == 'unsuspend')
+                    
+                        <li class="sidebar-search-wrapper">
+                            <form class="search-form" role="form" action="index.html" method="get">
+                                <div class="input-icon right">
+                                    <i class="icon-magnifier"></i>
+                                    <input type="text" class="form-control" name="query" placeholder="Search...">
+                                </div>
+                            </form>
+                        </li>
+                        <li class="start">
+                            <a href="/">
+                                <i class="icon-home"></i>
+                                <span class="title">Home</span>
+                                <span class="selected"></span>
+                            </a>
+                        </li>
+                        @if (Auth::user()->roles == 'administrator')
+                            <li>
+                                <a href="/mgpegawai">
+                                    <i class="icon-puzzle"></i>
+                                    <span class="title">Users</span>
+                                    <span class="arrow "></span>
+                                </a>
+                            </li>
+                        @endif
+
                         <li>
-                            <a href="/mgpegawai">
-                                <i class="icon-puzzle"></i>
-                                <span class="title">Users</span>
+                            <a href="/mgproduct">
+                                <i class="icon-present"></i>
+                                <span class="title">Products</span>
+                                <span class="arrow"></span>
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="/mgcate">
+                                <i class="icon-list"></i>
+                                <span class="title">Categories</span>
+                                <span class="arrow"></span>
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="/mgbrand">
+                                <i class="icon-present"></i>
+                                <span class="title">Brands</span>
+                                <span class="arrow"></span>
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="/mgorder">
+                                <i class="icon-calendar"></i>
+                                <span class="title">Transactions</span>
                                 <span class="arrow "></span>
                             </a>
                         </li>
-                    @endif
-                    @if (!Auth::user()->roles == 'administrator')
-                    <li>
-                        <a href="/mgproduct">
-                            <i class="icon-present"></i>
-                            <span class="title">Products</span>
-                            <span class="arrow"></span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="/mgcate">
-                            <i class="icon-list"></i>
-                            <span class="title">Categories</span>
-                            <span class="arrow"></span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="/mgbrand">
-                            <i class="icon-present"></i>
-                            <span class="title">Brands</span>
-                            <span class="arrow"></span>
-                        </a>
-
-                    </li>
-                    @endif
-                    <li>
-                        <a href="/mgorder">
-                            <i class="icon-calendar"></i>
-                            <span class="title">Transactions</span>
-                            <span class="arrow "></span>
-                        </a>
-                    </li>
-                    {{-- <li class="text-center pl-5 button-logout-dashboard mt-5">
+                        {{-- <li class="text-center pl-5 button-logout-dashboard mt-5">
                         <form style="left: 2rem;" class="ml-5" id="logout-form" action="{{ route('logout') }}" method="post">
                             @csrf
 
@@ -254,28 +263,45 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
                 @if (Auth::user()->roles == 'seller')
-				<div class="button-logout-dashboard-pegawai text-center pl-5">
-					<form style="left: 2rem;" class="ml-5" id="logout-form" action="{{ route('logout') }}" method="post">
-						@csrf
+                    <div class="button-logout-dashboard-pegawai text-center pl-5">
+                        <form style="left: 2rem;" class="ml-5" id="logout-form"
+                            action="{{ route('logout') }}" method="post">
+                            @csrf
 
-						<a href="/login" style="margin: 0 auto;">
-							
-							<button class="btn-danger btn btn-lg " style="">LOGOUT</button>
-						</a>
-					</form>
-				</div>
+                            <a href="/login" style="margin: 0 auto;">
+
+                                <button class="btn-danger btn btn-lg " style="">LOGOUT</button>
+                            </a>
+                        </form>
+                    </div>
                 @endif
                 @if (Auth::user()->roles == 'administrator')
-                <div class="button-logout-dashboard-admin text-center pl-5">
-					<form style="left: 2rem;" class="ml-5" id="logout-form" action="{{ route('logout') }}" method="post">
-						@csrf
+                    <div class="button-logout-dashboard-admin text-center pl-5">
+                        <form style="left: 2rem;" class="ml-5" id="logout-form"
+                            action="{{ route('logout') }}" method="post">
+                            @csrf
 
-						<a href="/login" style="margin: 0 auto;">
-							
-							<button class="btn-danger btn btn-lg " style="">LOGOUT</button>
-						</a>
-					</form>
-				</div>
+                            <a href="/login" style="margin: 0 auto;">
+
+                                <button class="btn-danger btn btn-lg " style="">LOGOUT</button>
+                            </a>
+                        </form>
+                    </div>
+                @endif
+                @endif
+
+                @if (Auth::user()->suspend == 'suspend')
+                    <div class="button-logout-dashboard-suspend text-center pl-5">
+                        <form style="left: 2rem;" class="ml-5" id="logout-form"
+                            action="{{ route('logout') }}" method="post">
+                            @csrf
+
+                            <a href="/login" style="margin: 0 auto;">
+
+                                <button class="btn-danger btn btn-lg " style="">LOGOUT</button>
+                            </a>
+                        </form>
+                    </div>
                 @endif
                 <!-- END SIDEBAR MENU -->
             </div>
@@ -308,7 +334,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
                 <!-- BEGIN STYLE CUSTOMIZER -->
-                
+
                 <!-- END BEGIN STYLE CUSTOMIZER -->
                 <!-- BEGIN PAGE HEADER-->
 

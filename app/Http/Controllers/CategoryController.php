@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -14,8 +15,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $cate = Category::all();
-        return view('admin.category.homecategory', compact('cate'));
+        if (Auth::user()->suspend == 'suspend') {
+            abort(404);
+        } else {
+            $cate = Category::all();
+            return view('admin.category.homecategory', compact('cate'));
+        }
     }
 
     /**
@@ -37,7 +42,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = new Category();
-        
+
         $data->name = $request->get('name');
 
         $data->save();
@@ -93,7 +98,6 @@ class CategoryController extends Controller
             $cate->delete();
             return redirect()->route('admin.cate.homeCate')->with('delete', 'Data Category Berhasil Dihapus');
         } catch (\PDOException $e) {
-            
         }
     }
 }

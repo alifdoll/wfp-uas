@@ -101,14 +101,14 @@ class OrderController extends Controller
 
         $cart = session()->get('cart');
         $user = Auth::user();
-        $t = new Order;
-        $t->customer_id = $user->id;
-        $t->transaction_date = Carbon::now()->toDateTimeString();
-        $t->save();
+        $o = new Order;
+        $o->customer_id = $user->id;
+        $o->transaction_date = Carbon::now()->toDateTimeString();
+        $o->save();
 
-        $totalharga = $t->insertProduct($cart, $user);
-        $t->total = $totalharga;
-        $t->save();
+        $totalharga = $o->insertProduct($cart, $user);
+        $o->total = $totalharga;
+        $o->save();
 
         session()->forget('cart');
         return redirect('home');
