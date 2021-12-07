@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\OrderDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,15 +17,17 @@ class OrderController extends Controller
      */
     public function index()
     {
+
         $order = Order::select(
             "orders.id",
             "orders.user_id",
             "orders.created_at",
+            "orders.paid_at",
             "users.id as users_id_name",
             "users.name"
         )
-        ->join("users", "users.id", "=", "orders.user_id")
-        ->get();
+            ->join("users", "users.id", "=", "orders.user_id")
+            ->get();
         return view('admin.transaction.homeTransaction', compact('order'));
         // return dd($order);
     }
@@ -95,23 +98,47 @@ class OrderController extends Controller
         $this->authorize('delete-permission', $order);
     }
 
-    public function submit_front()
+    public function createOrder()
     {
-        $this->authorize('checkmember');
-
         $cart = session()->get('cart');
-        $user = Auth::user();
-        $o = new Order;
-        $o->customer_id = $user->id;
-        $o->transaction_date = Carbon::now()->toDateTimeString();
-        $o->save();
+        $order = new Order;
+        $order->user_id = Auth::user()->id;
+        $saved = $order->save();
+        foreach ($cart as $item) {
+            $detail = new OrderDetail;
+            $detail->order_id = $order->id;
+            $detail->product_id = $item['id'];
+            $detail->quantity = $item['quantity'];
+            $detail->total_price = $item['quantity'] * $item['price'];
+            $detail->save();
+        }
 
-        $totalharga = $o->insertProduct($cart, $user);
-        $o->total = $totalharga;
-        $o->save();
+        if (!$saved) {
+            abort(500, 'error');
+        } else {
+            session()->forget('cart');
+            return redirect()->route('result');
+        }
+    }
 
-        session()->forget('cart');
-        return redirect('home');
-        
+    public function result()
+    {
+        return view('products.result');
+    }
+
+    public function confirmOrder($id)
+    {
+        $date = Carbon::now();
+        Order::where('id', $id)->update(['paid_at' => $date->toDateTimeString()]);
+        return redirect()->back();
+    }
+
+    public function history(Request $request)
+    {
+        $id = $request->get('id');
+        $order = Order::find($id);
+        return response()->json(array(
+            "msg" => $order
+        ), 200);
     }
 }

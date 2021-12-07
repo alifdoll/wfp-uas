@@ -99,24 +99,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->name = $request->post('name');
-        $product->description = $request->post('description');
-        $product->image = $request->post('image');
-        $product->price = $request->post('price');
-        $product->stock = $request->post('stock');
-        $product->cpu = $request->post('cpu');
-        $product->ram = $request->post('ram');
-        $product->storage = $request->post('storage');
-        $product->graphics = $request->post('graphics');
-        $product->display = $request->post('display');
-        $product->battery_capacity = $request->post('battery_capacity');
-        $product->color = $request->post('color');
-        $product->dimensions = $request->post('dimensions');
-        $product->weight = $request->post('weight');
-        $product->ports = $request->post('ports');
-        $product->connectivity = $request->post('connectivity');
-        $product->category_id = $request->post('category_id');
-        $product->brand_id = $request->post('brand_id');
+        $product->name = $request->get('name');
+        $product->description = $request->get('description');
+        $product->image = $request->get('image');
+        $product->price = $request->get('price');
+        $product->stock = $request->get('stock');
+        $product->cpu = $request->get('cpu');
+        $product->ram = $request->get('ram');
+        $product->storage = $request->get('storage');
+        $product->graphics = $request->get('graphics');
+        $product->display = $request->get('display');
+        $product->battery_capacity = $request->get('battery_capacity');
+        $product->color = $request->get('color');
+        $product->dimensions = $request->get('dimensions');
+        $product->weight = $request->get('weight');
+        $product->ports = $request->get('ports');
+        $product->connectivity = $request->get('connectivity');
+        $product->category_id = $request->get('category_id');
+        $product->brand_id = $request->get('brand_id');
 
         $product->save();
         return redirect()->route('admin.product.homeProduct')->with('status', 'Data Product berhasil diubah');
@@ -210,7 +210,7 @@ class ProductController extends Controller
         }
     }
 
-    public function order(Request $request)
+    public function order()
     {
         $cart = session()->get('cart');
         $order = new Order;
@@ -235,11 +235,9 @@ class ProductController extends Controller
 
     public function history()
     {
-        return view('products.history');
-    }
-
-    public function result()
-    {
-        return view('products.result');
+        $order = Order::where('user_id', Auth::user()->id)->get();
+        // $order = Order::find(1);
+        // return dd($order[0]->details);
+        return view('products.history', compact('order'));
     }
 }

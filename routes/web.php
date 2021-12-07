@@ -51,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/mgpegawai-add', 'UserController@create');
 
-    Route::get('/mgpegawai-edit/{id}', 'Homecontroller@editUser');
+    Route::get('/mgpegawai-edit/{id}', 'OrderController@confirmOrder');
 
     // End User
 
@@ -65,7 +65,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/mgproduct-edit/{id}', 'Homecontroller@editProduct');
 
-    Route::post('/order', 'ProductController@Order')->name('product.order');
+    Route::get('/order', 'OrderController@createOrder')->name('product.order');
 
     // End Product
 
@@ -96,7 +96,8 @@ Route::middleware(['auth'])->group(function () {
     // Order
 
     Route::get('/mgorder', 'OrderController@index')->name('admin.transaction.homeTransaction');
-    Route::get('/result', 'ProductController@result')->name("result");
+    Route::get('/result', 'OrderController@result')->name("result");
+    Route::post('/history/detail', 'OrderController@history')->name('order.history');
 
     // End Order
 });

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Policies;
+
 use Illuminate\Auth\Access\Response;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\User;
@@ -15,7 +16,7 @@ class UserPolicy
      * @return void
      */
 
-    
+
 
 
     public function __construct()
@@ -23,16 +24,17 @@ class UserPolicy
         //
     }
 
-    public function checkCustomer(User $user)
+    public function isAdmin(User $user)
     {
-        return ($user->roles == 'customer'
-            ? Response::allow()
-            : Response::deny('Anda haruslah terdaftar sebagai member'));
+        return $user->roles == "administrator" || $user->roles == "staff"
+            ? Response::allow("admin")
+            : Response::deny("customer");
     }
 
-    public function delete(User $user) {
-        return ($user->roles == 'administrator'
-        ? Response::allow()
-        : Response::deny('You must be a super administrator.'));
+    public function isNotSuspended(User $user)
+    {
+        return $user->suspend == "unsuspend"
+            ? Response::allow("not banned")
+            : Response::deny("Your Account Have Been Suspended");
     }
 }

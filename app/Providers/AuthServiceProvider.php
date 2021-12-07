@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Policies\UserPolicy;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,10 +14,10 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    
+
 
     protected $policies = [
-        User::class => UserPolicy::class,
+        'App\User' => 'App\Policies\UserPolicy',
     ];
 
     /**
@@ -28,10 +29,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('delete-permission', function($user) {
-            return ($user->roles == 'administrator');
-        });
+        // Gate::define('isAdmin', function ($user) {
+        //     return $user->role == 'administrator';
+        // });
 
-        Gate::define('delete-permission', 'App\Policies\UserPolicy@delete');
+        // Gate::define('isCustomer', function ($user) {
+        //     return $user->role == 'customer';
+        // });
+
+        // Gate::define('isSeller', function ($user) {
+        //     return $user->role == 'seller';
+        // });
     }
 }

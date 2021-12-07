@@ -48,37 +48,13 @@ $quan = (int) $value['quantity']; $total = $price * $quan + $total; } } @endphp
                     </table>
 
                     <div class="form-group">
-                        <form
-                            method="POST"
-                            action="{{ route('product.order') }}"
+                        <button
+                            class="btn btn-primary btn-lg py-3 btn-block"
+                            type="submit"
+                            onclick="window.location='/order'"
                         >
-                            @csrf @foreach ($cart as $item)
-                            <input
-                                type="hidden"
-                                name="product_id"
-                                value="{{ $item['id'] }}"
-                            />
-                            <input
-                                type="hidden"
-                                name="quantity"
-                                value="{{ $item['quantity'] }}"
-                            />
-                            <input
-                                type="hidden"
-                                name="total_price"
-                                value="{{
-                                    $item['quantity'] * $item['quantity']
-                                }}"
-                            />
-                            @endforeach
-
-                            <button
-                                class="btn btn-primary btn-lg py-3 btn-block"
-                                type="submit"
-                            >
-                                Place Order
-                            </button>
-                        </form>
+                            Place Order
+                        </button>
                     </div>
                 </div>
             </div>

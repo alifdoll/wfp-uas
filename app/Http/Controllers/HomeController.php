@@ -7,6 +7,8 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Users;
+use Exception;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,12 +31,14 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        // return dd($this->authorize('login'));
         if (!Auth::check()) {
             $product = Product::All();
             return view('home', compact('product'));
         } else {
             $user = Auth::user();
-            if ($user->roles == 'administrator' || $user->roles == 'seller') {
+            if ($user->roles == 'administrator' || $user->roles == 'staff') {
                 $product = Product::All();
                 return view('homeAdmin', compact('product'));
             } else if ($user->roles == 'customer') {
@@ -42,7 +46,6 @@ class HomeController extends Controller
                 return view('home', compact('product'));
             }
         }
-        // return dd(Auth::user()->roles);
     }
 
     public function detail($id)
@@ -67,12 +70,12 @@ class HomeController extends Controller
     public function mgproduct()
     {
         $user = Auth::user();
-            if ($user->roles == 'administrator' || $user->roles == 'seller') {
-                $product = Product::All();
-                return view('admin.product.homeProduct', compact('product'));
+        if ($user->roles == 'administrator' || $user->roles == 'seller') {
+            $product = Product::All();
+            return view('admin.product.homeProduct', compact('product'));
 
-                // return dd($product);
-            }
+            // return dd($product);
+        }
     }
 
     public function mgproductAdd()
@@ -80,7 +83,7 @@ class HomeController extends Controller
         $p = Product::all();
         $b = Brand::all();
         $c = Category::all();
-        return view('admin.product.tambahProduct', compact('p','b','c'));
+        return view('admin.product.tambahProduct', compact('p', 'b', 'c'));
     }
 
     public function detailAdminProduct($id)
@@ -95,7 +98,7 @@ class HomeController extends Controller
         $p = Product::find($id);
         $c = Category::all();
         $b = Brand::all();
-        return view('admin.product.editProduct', compact('p','c','b'));
+        return view('admin.product.editProduct', compact('p', 'c', 'b'));
         // return dd($p);
     }
 

@@ -37,12 +37,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = new User();
-        
+
         $data->username = $request->get('username');
         $data->name = $request->get('name');
         $data->email = $request->get('email');
         $data->password = Hash::make($request->get('password'));
-        $data->roles = 'seller';
+        $data->roles = 'staff';
 
         $data->save();
         return redirect()->route('admin.user.homeUser')->with('status', 'Data User berhasil ditambahkan');
@@ -79,16 +79,10 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $pass = $request->get('password')==''?'password':$request->get('password');
-        $user->username = $request->get('username');
-        $user->name = $request->get('name');
-        $user->email = $request->get('email');
-        $user->suspend = $request->get('suspend');
-        $user->password = Hash::make($pass);
-        
+        User::where('id', $user->id)
+            ->update(['password' => Hash::make("password")]);
 
-        $user->save();
-        return redirect()->route('admin.user.homeUser')->with('status', 'Data user berhasil diubah');
+        return redirect()->route('admin.user.homeUser')->with('status', 'Password Berhasil di reset');
     }
 
     /**
@@ -99,11 +93,14 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        try {
-            $user->delete();
-            return redirect()->route('admin.user.homeUser')->with('delete', 'Data User Berhasil Dihapus');
-        } catch (\PDOException $e) {
-            
+        if ($user->suspend == 1) {
+            User::where('id', $user->id)
+                ->update(['suspend' => 0]);
+        } else {
+            User::where('id', $user->id)
+                ->update(['suspend' => 1]);
         }
+
+        return redirect()->route('admin.user.homeUser')->with('status', 'Berhasil suspend');
     }
 }
