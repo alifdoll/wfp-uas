@@ -15,7 +15,7 @@
         <div class="container">
 
             <div class="row mb-5">
-                <div class="col-md-9 order-2">
+                <div class="col-md-12 order-2">
 
                     <div class="row">
                         <div class="col-md-12 mb-5">
@@ -31,12 +31,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-5">
+                    <div class="row">
 
                         @foreach ($product as $p)
 
 
-                            <div class="col-sm-12 col-lg-4 mb-4" data-aos="fade-up">
+                            <div class="col-sm-4 mb-4" data-aos="fade-up">
                                 <div class="block-4 text-center border">
                                     <figure class="block-4-image">
                                         <a href="/product/{{ $p->id }}"><img src="{{ $p->image }}"

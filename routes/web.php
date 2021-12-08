@@ -76,25 +76,25 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/mgcate-edit/{id}', 'CategoryController@edit');
 
-    Route::resource('/cates', 'CategoryController')->middleware('auth');
+    Route::resource('/cates', 'CategoryController');
 
     // End Category
 
     // Brand
 
-    Route::get('/mgbrand', 'BrandController@index')->name('admin.brand.homeBrand')->middleware('auth');
+    Route::get('/mgbrand', 'BrandController@index')->name('admin.brand.homeBrand');
 
 
-    Route::get('/mgbrand-add', 'BrandController@create')->middleware('auth');
+    Route::get('/mgbrand-add', 'BrandController@create');
 
-    Route::resource('/brands', 'BrandController')->middleware('auth')->middleware('auth');
+    Route::resource('/brands', 'BrandController');
 
-    Route::get('/mgbrand-edit/{id}', 'BrandController@edit')->middleware('auth');
+    Route::get('/mgbrand-edit/{id}', 'BrandController@edit');
 
     // End Brand
 
     // Order
-
+    Route::resource('/orders', 'OrderController');
     Route::get('/mgorder', 'OrderController@index')->name('admin.transaction.homeTransaction');
     Route::get('/result', 'OrderController@result')->name("result");
     Route::post('/history/detail', 'OrderController@history')->name('order.history');

@@ -51,17 +51,12 @@ $total = $price * $quan + $total; } } @endphp
                                         {{ $item["name"] }}
                                     </h2>
                                 </td>
-                                <td>Rp. {{ $item["price"] }}</td>
+                                <td>Rp. {{ number_format($item["price"]) }}</td>
                                 <td>
-                                    <div
-                                        class="input-group mb-3"
-                                        style="max-width: 120px"
-                                    >
-                                        <h2>{{ $item["quantity"] }}</h2>
-                                    </div>
+                                    {{ $item["quantity"] }}
                                 </td>
                                 <td>
-                                    Rp. {{ $item["price"] * $item["quantity"] }}
+                                    Rp. {{ number_format($item["price"] * $item["quantity"]) }}
                                 </td>
                                 <td>
                                     <a
@@ -115,7 +110,7 @@ $total = $price * $quan + $total; } } @endphp
                                 <span class="text-black">Total</span>
                             </div>
                             <div class="col-md-6 text-right">
-                                <strong class="text-black">{{ $total }}</strong>
+                                <strong class="text-black">{{ number_format($total) }}</strong>
                             </div>
                         </div>
 

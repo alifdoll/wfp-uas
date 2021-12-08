@@ -43,7 +43,7 @@
                         @foreach ($product as $p)
 
 
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 mb-5">
                                 <div class="card">
                                     <img src="{{ $p->image }}" class="card-img-top"
                                         style="width: 100%; height: 20rem;" alt="Hu-Tao">

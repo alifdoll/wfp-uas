@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->dateTime('paid_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -33,7 +33,7 @@ $quan = (int) $value['quantity']; $total = $price * $quan + $total; } } @endphp
                                     }}<strong class="mx-2">x</strong
                                     >{{ $item["quantity"] }}
                                 </td>
-                                <td>Rp. {{ $item["price"] }}</td>
+                                <td>Rp. {{ number_format($item["price"] * $item["quantity"]) }}</td>
                             </tr>
                             @endforeach
                             <tr>
@@ -41,7 +41,7 @@ $quan = (int) $value['quantity']; $total = $price * $quan + $total; } } @endphp
                                     <strong>Order Total</strong>
                                 </td>
                                 <td class="text-black font-weight-bold">
-                                    <strong>{{ $total }}</strong>
+                                    <strong>Rp. {{ number_format($total) }}</strong>
                                 </td>
                             </tr>
                         </tbody>

@@ -63,7 +63,7 @@
         "roles": "customer",
         "suspend": 1,
         "created_at": "2021-12-07 15:58:25",
-        "updated_at": "2021-12-07 15:58:25"
+        "updated_at": "2021-12-07 17:30:15"
     },
     {
         "id": 9,
@@ -75,5 +75,27 @@
         "suspend": 1,
         "created_at": "2021-12-07 16:58:06",
         "updated_at": "2021-12-07 17:11:25"
+    },
+    {
+        "id": 10,
+        "username": "asdasd",
+        "name": "asd",
+        "email": "asd@gmail.com",
+        "password": "$2y$10$H5y.7twAkdk5yWUDz8EmqepuC6FUjbwqse1P8vRBe1NTo9L83IziS",
+        "roles": "customer",
+        "suspend": 0,
+        "created_at": "2021-12-07 18:08:23",
+        "updated_at": "2021-12-07 18:08:23"
+    },
+    {
+        "id": 11,
+        "username": "asdasdsa",
+        "name": "asdasdadsa",
+        "email": "ads@gmail.com",
+        "password": "$2y$10$nDiQXYsiL7dSEpU65F63P.ti8G7OScEaM.3lIlba5I0rjEPG25xsa",
+        "roles": "staff",
+        "suspend": 0,
+        "created_at": "2021-12-07 21:38:46",
+        "updated_at": "2021-12-07 21:38:46"
     }
 ]

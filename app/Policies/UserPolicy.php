@@ -26,9 +26,8 @@ class UserPolicy
 
     public function isAdmin(User $user)
     {
-        return $user->roles == "administrator" || $user->roles == "staff"
-            ? Response::allow("admin")
-            : Response::deny("customer");
+        return $user->roles == "administrator" || $user->roles == "staff";
+           
     }
 
     public function isNotSuspended(User $user)

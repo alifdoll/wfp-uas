@@ -187,11 +187,8 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="header-inner">
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
-                    <a href="index.html">
-                        <img
-                            src="{{ asset('conquer2/assets/img/logo.png') }}"
-                            alt="logo"
-                        />
+                    <a href="/">
+                        <h4 style="color: white;">ADA.SHOP</h4>
                     </a>
                 </div>
                 <form
@@ -238,44 +235,13 @@ License: You must have a valid license purchased only from themeforest(the above
                             data-hover="dropdown"
                             data-close-others="true"
                         >
-                            <img alt="" src="assets/img/avatar3_small.jpg" />
+                            <img alt="" src="{{ asset('assets/img/avatar3_small.jpg') }}" />
                             <span class="username username-hide-on-mobile"
                                 >{{ Auth::user()->name }}
                             </span>
-                            <i class="fa fa-angle-down"></i>
+                           
                         </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="extra_profile.html"
-                                    ><i class="fa fa-user"></i> My Profile</a
-                                >
-                            </li>
-
-                            <li>
-                                <a href="/login"
-                                    ><i class="fa fa-key"></i>
-
-                                    <form
-                                        id="logout-form"
-                                        action="{{ route('logout') }}"
-                                        method="post"
-                                    >
-                                        @csrf
-                                        <button
-                                            type="submit"
-                                            class="nav-link active"
-                                            aria-current="page"
-                                            style="
-                                                font-weight: bold;
-                                                color: red;
-                                            "
-                                        >
-                                            LOGOUT
-                                        </button>
-                                    </form>
-                                </a>
-                            </li>
-                        </ul>
+                        
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
                 </ul>
@@ -392,7 +358,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         --}}
                     </ul>
 
-                    @if (Auth::user()->roles == 'seller')
+                    @if (Auth::user()->roles == 'staff')
                     <div
                         class="button-logout-dashboard-pegawai text-center pl-5"
                     >

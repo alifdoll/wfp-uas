@@ -59,6 +59,15 @@
                 background-color: #7971e9;
                 color: white;
             }
+
+            .modal-dialog{
+    position: relative;
+    display: table; /* <-- This makes the trick */
+    overflow-y: auto;    
+    overflow-x: auto;
+    width: auto;
+    min-width: 300px;   
+}
         </style>
     </head>
 
@@ -77,7 +86,7 @@
                             >
                                 <div class="site-logo">
                                     <a href="/" class="js-logo-clone"
-                                        >Shoppers</a
+                                        >ADA.SHOP</a
                                     >
                                 </div>
                             </div>
@@ -288,6 +297,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row pt-5 mt-5 text-center">
                         <div class="col-md-12">
                             <p>

@@ -33,7 +33,7 @@
     
                     <div class="col-12  text-center">
                         <div class="site-logo">
-                            <a href="/" class="js-logo-clone">Shoppers</a>
+                            <a href="/" class="js-logo-clone">ADA.SHOP</a>
                         </div>
                     </div>
     

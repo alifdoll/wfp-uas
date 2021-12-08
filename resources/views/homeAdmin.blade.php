@@ -1,3 +1,5 @@
+
+
 @extends('layouts.admin') @section('header')
 <h3 class="page-title">Home <small>Main Menu</small></h3>
 <div class="page-bar">
@@ -24,104 +26,117 @@
 
             @endif @if (Auth::user()->suspend == 0) @if (Auth::user()->roles
             =='administrator')
-            <div class="col-sm-4">
-                <h2 class="pb-5">Management Pegawai</h2>
-                <div class="caption-dashboard mt-5">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Rerum dolores voluptatum distinctio at inventore,
-                        blanditiis saepe quod quo, magni, aspernatur doloribus
-                        eum. Veniam numquam perferendis assumenda distinctio.
-                        Perspiciatis, quibusdam dolorem!
-                    </p>
-                    <a
-                        href="/mgpegawai"
-                        role="button"
-                        class="btn btn-lg btn-primary"
-                        >View</a
-                    >
+            <div class="col-sm-4 mb-5" data-aos="fade-up">
+                <div class="block-4 text-center border">
+                    <figure class="block-4-image">
+                        
+                    </figure>
+                    <div class="block-4-text p-4">
+                        <h3 class="mb-5" style="font-weight: bold;">Management Pegawai</h3>
+                        
+                       
+            <a
+            href="/mgpegawai"
+            role="button"
+            class="btn btn-lg btn-primary"
+            style="width: 80%;"
+            >View</a
+            >
+                    </div>
                 </div>
             </div>
             @endif
 
-            <div class="col-sm-4">
-                <h2 class="pb-5">Management Product</h2>
-                <div class="caption-dashboard mt-5">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Rerum dolores voluptatum distinctio at inventore,
-                        blanditiis saepe quod quo, magni, aspernatur doloribus
-                        eum. Veniam numquam perferendis assumenda distinctio.
-                        Perspiciatis, quibusdam dolorem!
-                    </p>
-                    <a
-                        href="/mgproduct"
-                        role="button"
-                        class="btn btn-lg btn-primary"
-                        >View</a
-                    >
+
+            <div class="col-sm-4 mb-5" data-aos="fade-up">
+                <div class="block-4 text-center border">
+                    <figure class="block-4-image">
+                        
+                    </figure>
+                    <div class="block-4-text p-4">
+                        <h3 class="mb-5" style="font-weight: bold;">Management Product</h3>
+                        
+                       
+            <a
+            href="/mgproduct"
+            role="button"
+            class="btn btn-lg btn-primary"
+            style="width: 80%;"
+            >View</a
+            >
+                    </div>
                 </div>
             </div>
 
-            <div class="col-sm-4">
-                <h2 class="pb-5">Management Transaction</h2>
-                <div class="caption-dashboard mt-5">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Rerum dolores voluptatum distinctio at inventore,
-                        blanditiis saepe quod quo, magni, aspernatur doloribus
-                        eum. Veniam numquam perferendis assumenda distinctio.
-                        Perspiciatis, quibusdam dolorem!
-                    </p>
-                    <a
-                        href="/mgorder"
-                        role="button"
-                        class="btn btn-lg btn-primary"
-                        >View</a
-                    >
+            <div class="col-sm-4 mb-5" data-aos="fade-up">
+                <div class="block-4 text-center border">
+                    <figure class="block-4-image">
+                        
+                    </figure>
+                    <div class="block-4-text p-4">
+                        <h3 class="mb-5" style="font-weight: bold;">Management Transaction</h3>
+                        
+                       
+            <a
+            href="/mgorder"
+            role="button"
+            class="btn btn-lg btn-primary"
+            style="width: 80%;"
+            >View</a
+            >
+                    </div>
                 </div>
             </div>
 
-            <div class="row mb-5 mt-5 justify-content-around text-center">
-                <div class="col-sm-4">
-                    <h2 class="pb-5">Management Category</h2>
-                    <div class="caption-dashboard mt-5">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Rerum dolores voluptatum distinctio at
-                            inventore, blanditiis saepe quod quo, magni,
-                            aspernatur doloribus eum. Veniam numquam perferendis
-                            assumenda distinctio. Perspiciatis, quibusdam
-                            dolorem!
-                        </p>
-                        <a
-                            href="/mgcate"
-                            role="button"
-                            class="btn btn-lg btn-primary"
-                            >View</a
-                        >
+            <div class="col-sm-4 mb-5" data-aos="fade-up">
+                <div class="block-4 text-center border">
+                    <figure class="block-4-image">
+                        
+                    </figure>
+                    <div class="block-4-text p-4">
+                        <h3 class="mb-5" style="font-weight: bold;">Management Category</h3>
+                        
+                       
+            <a
+            href="/mgcate"
+            role="button"
+            class="btn btn-lg btn-primary"
+            style="width: 80%;"
+            >View</a
+            >
                     </div>
                 </div>
+            </div>
 
-                <div class="col-sm-4">
-                    <h2 class="pb-5">Management Brand</h2>
-                    <div class="caption-dashboard mt-5">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Rerum dolores voluptatum distinctio at
-                            inventore, blanditiis saepe quod quo, magni,
-                            aspernatur doloribus eum. Veniam numquam perferendis
-                            assumenda distinctio. Perspiciatis, quibusdam
-                            dolorem!
-                        </p>
-                        <a
-                            href="/mgbrand"
-                            role="button"
-                            class="btn btn-lg btn-primary"
-                            >View</a
-                        >
+            <div class="col-sm-4 mb-5" data-aos="fade-up">
+                <div class="block-4 text-center border">
+                    <figure class="block-4-image">
+                        
+                    </figure>
+                    <div class="block-4-text p-4">
+                        <h3 class="mb-5" style="font-weight: bold;">Management Brand</h3>
+                        
+                       
+            <a
+            href="/mgbrand"
+            role="button"
+            class="btn btn-lg btn-primary"
+            style="width: 80%;"
+            >View</a
+            >
                     </div>
                 </div>
+            </div>
+
+            {{-- ////////////////////////////////////////////////// --}}
+
+            
+
+            
+
+            
+
+                
 
                 @endif
             </div>

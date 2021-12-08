@@ -202,12 +202,13 @@ class ProductController extends Controller
     public function checkout()
     {
         $cart = session()->get('cart');
-        if ($cart == null) {
-            abort(404);
-        } else {
-            // return dd($cart);
-            return view('products.checkout', compact('cart'));
-        }
+        return view('products.checkout', compact('cart'));
+        // if ($cart == null) {
+        //     abort(404);
+        // } else {
+        //     // return dd($cart);
+        //     return view('products.checkout', compact('cart'));
+        // }
     }
 
     public function order()

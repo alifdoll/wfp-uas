@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->longText('description');
             $table->longText('image');
             $table->biginteger("price");
-            $table->integer("stock");
+            
             $table->string("cpu");
             $table->string("ram");
             $table->string("storage");

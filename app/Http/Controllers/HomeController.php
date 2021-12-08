@@ -70,7 +70,7 @@ class HomeController extends Controller
     public function mgproduct()
     {
         $user = Auth::user();
-        if ($user->roles == 'administrator' || $user->roles == 'seller') {
+        if ($user->roles == 'administrator' || $user->roles == 'staff') {
             $product = Product::All();
             return view('admin.product.homeProduct', compact('product'));
 

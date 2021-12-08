@@ -15,12 +15,15 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->suspend == 'suspend') {
-            abort(404);
-        } else {
-            $cate = Category::all();
+        // if (Auth::user()->suspend == 'suspend') {
+        //     abort(404);
+        // } else {
+        //     $cate = Category::all();
+        //     return view('admin.category.homecategory', compact('cate'));
+        // }
+
+        $cate = Category::all();
             return view('admin.category.homecategory', compact('cate'));
-        }
     }
 
     /**

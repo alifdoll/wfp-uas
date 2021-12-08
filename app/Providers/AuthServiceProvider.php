@@ -33,6 +33,10 @@ class AuthServiceProvider extends ServiceProvider
         //     return $user->role == 'administrator';
         // });
 
+        Gate::define('delete-permission', function($user) {
+            return ($user->roles == 'administrator');
+        });
+
         // Gate::define('isCustomer', function ($user) {
         //     return $user->role == 'customer';
         // });
