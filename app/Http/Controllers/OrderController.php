@@ -147,19 +147,37 @@ class OrderController extends Controller
         return redirect()->back();
     }
 
+    public function detailsTr($id)
+    {
+
+        
+
+        
+        $order = Order::select(
+            "orders.id as order_id",
+            "orders.paid_at as order_paid_at",
+            "od.quantity as quantity",
+            "od.total_price as total",
+            "od.created_at as pembelian",
+            "p.id as productId",
+            "p.name as productName",
+            "p.image as productImage",
+            "p.price as unitPrice"
+
+
+        ) 
+        ->join("order_details as od", "od.order_id", "=", "orders.id")
+        ->join("products as p", "p.id", "=", "od.product_id")
+        ->where('order_id', $id)
+        ->get();
+        // $order = Order::find($id)->join("order_details", "order_details.order_id", "=", "orders.id");
+        return view('admin.transaction.detail', compact('order'));
+        // return dd($order);
+    }
     public function history(Request $request)
     {
 
-        // $order = Order::select(
-        //     "orders.id",
-        //     "orders.user_id",
-        //     "orders.created_at",
-        //     "orders.paid_at",
-        //     "users.id as users_id_name",
-        //     "users.name"
-        // )
-        //     ->join("users", "users.id", "=", "orders.user_id")
-        //     ->get();
+        
 
         $id = $request->get('id');
         $order = Order::select(

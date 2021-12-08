@@ -49,7 +49,7 @@ class ProductController extends Controller
         $data->description = $request->get('description');
         $data->image = $request->get('image');
         $data->price = $request->get('price');
-        $data->stock = $request->get('stock');
+        
         $data->cpu = $request->get('cpu');
         $data->ram = $request->get('ram');
         $data->storage = $request->get('storage');
@@ -103,7 +103,7 @@ class ProductController extends Controller
         $product->description = $request->get('description');
         $product->image = $request->get('image');
         $product->price = $request->get('price');
-        $product->stock = $request->get('stock');
+        
         $product->cpu = $request->get('cpu');
         $product->ram = $request->get('ram');
         $product->storage = $request->get('storage');

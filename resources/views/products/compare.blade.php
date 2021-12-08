@@ -107,7 +107,7 @@
                                 type="button"
                                 class="btn btn-outline-primary btn-lg"
                                 style="width: 100%"
-                                onclick="showProduct1('{{$p1->id}}')"
+                                onclick="showProduct1('1')"
                             >
                                 Select
                             </button>
@@ -139,7 +139,7 @@
                                 type="button"
                                 class="btn btn-outline-primary btn-lg"
                                 style="width: 100%"
-                                onclick="showProduct2('{{$p2->id}}')"
+                                onclick="showProduct2('2')"
                             >
                                 Select
                             </button>

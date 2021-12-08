@@ -96,6 +96,7 @@ Route::middleware(['auth'])->group(function () {
     // Order
     Route::resource('/orders', 'OrderController');
     Route::get('/mgorder', 'OrderController@index')->name('admin.transaction.homeTransaction');
+    Route::get('/detailtr/{id}', 'OrderController@detailsTr')->name('admin.transaction.detail');
     Route::get('/result', 'OrderController@result')->name("result");
     Route::post('/history/detail', 'OrderController@history')->name('order.history');
 

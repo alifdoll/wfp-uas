@@ -45,9 +45,7 @@
                         <h3 class="mt-4">
                             Harga: Rp. {{ $p->price }}
                         </h3>
-                        <h4 class="mt-4">
-                            Tersisa: {{ $p->stock }} unit
-                        </h4>
+                        
                     </div>
 
                     <div class="table-detail-product-item">

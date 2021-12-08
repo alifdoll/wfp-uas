@@ -44,10 +44,7 @@
                             <label for="price" class="form-label">Price</label>
                             <input type="number" class="form-control" name="price" id="price">
                         </div>
-                        <div class="mb-3">
-                            <label for="stock" class="form-label">Stock</label>
-                            <input type="number" class="form-control" name="stock" id="stock">
-                        </div>
+                        
 
                         <div class="mb-3">
                             <label for="image" class="form-label">Image URL</label>
